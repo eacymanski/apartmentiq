@@ -16,13 +16,14 @@ function App() {
   }, []);
 
   function handlePropertyClick(property) {
-    console.log("INSIDE CLICK")
     setCurrentProperty(property)
   }
 
   if(currentProperty) {
     return <Property
       property={currentProperty}
+      isViewing={true}
+      onChildEvent={() => handlePropertyClick(null)}
     />
   }
   return (
@@ -32,11 +33,8 @@ function App() {
         <div>
         <Property
           property={property}
+          onChildEvent={() => handlePropertyClick(property)}
         />
-        <button
-          onClick={() => handlePropertyClick(property)}>
-        View Property
-        </button>
         </div>
       ))}
     </div>
